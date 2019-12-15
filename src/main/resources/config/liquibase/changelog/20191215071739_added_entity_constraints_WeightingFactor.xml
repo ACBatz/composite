@@ -20,11 +20,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="property"/>
         
-        <addForeignKeyConstraint baseColumnNames="calculation_id"
-                                 baseTableName="weighting_factor"
-                                 constraintName="fk_weighting_factor_calculation_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="calculation"/>
-
     </changeSet>
 </databaseChangeLog>

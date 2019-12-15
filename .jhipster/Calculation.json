@@ -20,12 +20,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "weightingFactor",
-            "otherEntityRelationshipName": "calculation",
-            "relationshipName": "weightingFactors"
-        },
-        {
             "relationshipType": "many-to-many",
             "otherEntityName": "environmentalEffect",
             "otherEntityRelationshipName": "calculations",
@@ -47,6 +41,14 @@
             "otherEntityRelationshipName": "calculations",
             "relationshipName": "loads",
             "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "weightingFactor",
+            "otherEntityRelationshipName": "calculations",
+            "relationshipName": "weightingFactors",
+            "otherEntityField": "id",
             "ownerSide": true
         },
         {

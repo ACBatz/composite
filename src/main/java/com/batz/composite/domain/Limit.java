@@ -39,11 +39,6 @@ public class Limit implements Serializable {
     @JsonIgnore
     private Set<Composite> composites = new HashSet<>();
 
-    @ManyToMany(mappedBy = "limits")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JsonIgnore
-    private Set<UnitOfMeasure> unitOfMeasures = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -115,31 +110,6 @@ public class Limit implements Serializable {
 
     public void setComposites(Set<Composite> composites) {
         this.composites = composites;
-    }
-
-    public Set<UnitOfMeasure> getUnitOfMeasures() {
-        return unitOfMeasures;
-    }
-
-    public Limit unitOfMeasures(Set<UnitOfMeasure> unitOfMeasures) {
-        this.unitOfMeasures = unitOfMeasures;
-        return this;
-    }
-
-    public Limit addUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
-        this.unitOfMeasures.add(unitOfMeasure);
-        unitOfMeasure.getLimits().add(this);
-        return this;
-    }
-
-    public Limit removeUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
-        this.unitOfMeasures.remove(unitOfMeasure);
-        unitOfMeasure.getLimits().remove(this);
-        return this;
-    }
-
-    public void setUnitOfMeasures(Set<UnitOfMeasure> unitOfMeasures) {
-        this.unitOfMeasures = unitOfMeasures;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

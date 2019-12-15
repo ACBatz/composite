@@ -26,17 +26,6 @@
 
     <changeSet id="20191215071736-1-relations" author="jhipster">
 
-        <createTable tableName="unit_of_measure_limits">
-            <column name="limits_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="unit_of_measure_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="unit_of_measure_id, limits_id" tableName="unit_of_measure_limits"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 

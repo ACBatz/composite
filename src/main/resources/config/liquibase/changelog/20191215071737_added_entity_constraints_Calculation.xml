@@ -44,5 +44,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="load"/>
         
+        <addForeignKeyConstraint baseColumnNames="calculation_id"
+                                 baseTableName="calculation_weighting_factors"
+                                 constraintName="fk_calculation_weighting_factors_calculation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="calculation"/>
+
+        <addForeignKeyConstraint baseColumnNames="weighting_factors_id"
+                                 baseTableName="calculation_weighting_factors"
+                                 constraintName="fk_calculation_weighting_factors_weighting_factors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="weighting_factor"/>
+        
     </changeSet>
 </databaseChangeLog>

@@ -7,6 +7,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { ICalculation } from 'app/shared/model/calculation.model';
 import { AccountService } from 'app/core';
 import { CalculationService } from './calculation.service';
+import { IProperty } from 'app/shared/model/property.model';
 
 @Component({
   selector: 'jhi-calculation',
@@ -61,5 +62,9 @@ export class CalculationComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  mapPropertiesToNames(properties: Array<IProperty>) {
+    return properties.map(property => property.name).join(', ');
   }
 }

@@ -26,8 +26,7 @@ export class WeightingFactorUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     value: [null, [Validators.min(0), Validators.max(10)]],
-    properties: [],
-    calculation: []
+    properties: []
   });
 
   constructor(
@@ -64,8 +63,7 @@ export class WeightingFactorUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: weightingFactor.id,
       value: weightingFactor.value,
-      properties: weightingFactor.properties,
-      calculation: weightingFactor.calculation
+      properties: weightingFactor.properties
     });
   }
 
@@ -88,8 +86,7 @@ export class WeightingFactorUpdateComponent implements OnInit {
       ...new WeightingFactor(),
       id: this.editForm.get(['id']).value,
       value: this.editForm.get(['value']).value,
-      properties: this.editForm.get(['properties']).value,
-      calculation: this.editForm.get(['calculation']).value
+      properties: this.editForm.get(['properties']).value
     };
   }
 

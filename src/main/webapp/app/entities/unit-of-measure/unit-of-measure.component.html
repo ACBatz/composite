@@ -19,7 +19,6 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Name</span></th>
-            <th><span>Limits</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,11 +26,6 @@
             <tr *ngFor="let unitOfMeasure of unitOfMeasures ;trackBy: trackId">
                 <td><a [routerLink]="['/unit-of-measure', unitOfMeasure.id, 'view' ]">{{unitOfMeasure.id}}</a></td>
                 <td>{{unitOfMeasure.name}}</td>
-                <td>
-                    <span *ngFor="let limits of unitOfMeasure.limits; let last = last">
-                            <a class="form-control-static" [routerLink]="['/limit', limits?.id, 'view' ]">{{limits.id}}</a>{{last ? '' : ', '}}
-                        </span>
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

@@ -82,13 +82,13 @@ public class UnitOfMeasureResource {
     /**
      * {@code GET  /unit-of-measures} : get all the unitOfMeasures.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
+
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of unitOfMeasures in body.
      */
     @GetMapping("/unit-of-measures")
-    public List<UnitOfMeasure> getAllUnitOfMeasures(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<UnitOfMeasure> getAllUnitOfMeasures() {
         log.debug("REST request to get all UnitOfMeasures");
-        return unitOfMeasureRepository.findAllWithEagerRelationships();
+        return unitOfMeasureRepository.findAll();
     }
 
     /**
@@ -100,7 +100,7 @@ public class UnitOfMeasureResource {
     @GetMapping("/unit-of-measures/{id}")
     public ResponseEntity<UnitOfMeasure> getUnitOfMeasure(@PathVariable Long id) {
         log.debug("REST request to get UnitOfMeasure : {}", id);
-        Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findOneWithEagerRelationships(id);
+        Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(unitOfMeasure);
     }
 

@@ -28,12 +28,9 @@ public class UnitOfMeasure implements Serializable {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "unitOfMeasure")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "unit_of_measure_limits",
-               joinColumns = @JoinColumn(name = "unit_of_measure_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "limits_id", referencedColumnName = "id"))
-    private Set<Limit> limits = new HashSet<>();
+    private Set<Property> properties = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -57,29 +54,29 @@ public class UnitOfMeasure implements Serializable {
         this.name = name;
     }
 
-    public Set<Limit> getLimits() {
-        return limits;
+    public Set<Property> getProperties() {
+        return properties;
     }
 
-    public UnitOfMeasure limits(Set<Limit> limits) {
-        this.limits = limits;
+    public UnitOfMeasure properties(Set<Property> properties) {
+        this.properties = properties;
         return this;
     }
 
-    public UnitOfMeasure addLimits(Limit limit) {
-        this.limits.add(limit);
-        limit.getUnitOfMeasures().add(this);
+    public UnitOfMeasure addProperties(Property property) {
+        this.properties.add(property);
+        property.setUnitOfMeasure(this);
         return this;
     }
 
-    public UnitOfMeasure removeLimits(Limit limit) {
-        this.limits.remove(limit);
-        limit.getUnitOfMeasures().remove(this);
+    public UnitOfMeasure removeProperties(Property property) {
+        this.properties.remove(property);
+        property.setUnitOfMeasure(null);
         return this;
     }
 
-    public void setLimits(Set<Limit> limits) {
-        this.limits = limits;
+    public void setProperties(Set<Property> properties) {
+        this.properties = properties;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

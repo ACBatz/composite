@@ -11,8 +11,6 @@ import { IProperty } from 'app/shared/model/property.model';
 import { PropertyService } from 'app/entities/property';
 import { IComposite } from 'app/shared/model/composite.model';
 import { CompositeService } from 'app/entities/composite';
-import { IUnitOfMeasure } from 'app/shared/model/unit-of-measure.model';
-import { UnitOfMeasureService } from 'app/entities/unit-of-measure';
 
 @Component({
   selector: 'jhi-limit-update',
@@ -24,8 +22,6 @@ export class LimitUpdateComponent implements OnInit {
   properties: IProperty[];
 
   composites: IComposite[];
-
-  unitofmeasures: IUnitOfMeasure[];
 
   editForm = this.fb.group({
     id: [],
@@ -39,7 +35,6 @@ export class LimitUpdateComponent implements OnInit {
     protected limitService: LimitService,
     protected propertyService: PropertyService,
     protected compositeService: CompositeService,
-    protected unitOfMeasureService: UnitOfMeasureService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -81,13 +76,6 @@ export class LimitUpdateComponent implements OnInit {
         map((response: HttpResponse<IComposite[]>) => response.body)
       )
       .subscribe((res: IComposite[]) => (this.composites = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.unitOfMeasureService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IUnitOfMeasure[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IUnitOfMeasure[]>) => response.body)
-      )
-      .subscribe((res: IUnitOfMeasure[]) => (this.unitofmeasures = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(limit: ILimit) {
@@ -144,10 +132,6 @@ export class LimitUpdateComponent implements OnInit {
   }
 
   trackCompositeById(index: number, item: IComposite) {
-    return item.id;
-  }
-
-  trackUnitOfMeasureById(index: number, item: IUnitOfMeasure) {
     return item.id;
   }
 

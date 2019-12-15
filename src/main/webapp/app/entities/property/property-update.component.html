@@ -21,6 +21,13 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_unitOfMeasure">Unit Of Measure</label>
+                    <select class="form-control" id="field_unitOfMeasure" name="unitOfMeasure" formControlName="unitOfMeasure">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="unitOfMeasureOption.id === editForm.get('unitOfMeasure').value?.id ? editForm.get('unitOfMeasure').value : unitOfMeasureOption" *ngFor="let unitOfMeasureOption of unitofmeasures; trackBy: trackUnitOfMeasureById">{{unitOfMeasureOption.name}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

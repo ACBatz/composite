@@ -13,10 +13,13 @@ import { IMiscellaneousConstraint } from 'app/shared/model/miscellaneous-constra
 import { MiscellaneousConstraintService } from 'app/entities/miscellaneous-constraint';
 import { ILoad } from 'app/shared/model/load.model';
 import { LoadService } from 'app/entities/load';
+import { IWeightingFactor } from 'app/shared/model/weighting-factor.model';
+import { WeightingFactorService } from 'app/entities/weighting-factor';
 import { INoun } from 'app/shared/model/noun.model';
 import { NounService } from 'app/entities/noun';
 import { IVerb } from 'app/shared/model/verb.model';
 import { VerbService } from 'app/entities/verb';
+import { IProperty } from 'app/shared/model/property.model';
 
 @Component({
   selector: 'jhi-calculation-update',
@@ -31,6 +34,8 @@ export class CalculationUpdateComponent implements OnInit {
 
   loads: ILoad[];
 
+  weightingfactors: IWeightingFactor[];
+
   nouns: INoun[];
 
   verbs: IVerb[];
@@ -41,7 +46,8 @@ export class CalculationUpdateComponent implements OnInit {
     description: [null, [Validators.maxLength(100)]],
     environmentalEffects: [],
     miscConstraints: [],
-    loads: []
+    loads: [],
+    weightingFactors: []
   });
 
   constructor(
@@ -50,6 +56,7 @@ export class CalculationUpdateComponent implements OnInit {
     protected environmentalEffectService: EnvironmentalEffectService,
     protected miscellaneousConstraintService: MiscellaneousConstraintService,
     protected loadService: LoadService,
+    protected weightingFactorService: WeightingFactorService,
     protected nounService: NounService,
     protected verbService: VerbService,
     protected activatedRoute: ActivatedRoute,
@@ -85,6 +92,13 @@ export class CalculationUpdateComponent implements OnInit {
         map((response: HttpResponse<ILoad[]>) => response.body)
       )
       .subscribe((res: ILoad[]) => (this.loads = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.weightingFactorService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IWeightingFactor[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IWeightingFactor[]>) => response.body)
+      )
+      .subscribe((res: IWeightingFactor[]) => (this.weightingfactors = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.nounService
       .query()
       .pipe(
@@ -108,7 +122,8 @@ export class CalculationUpdateComponent implements OnInit {
       description: calculation.description,
       environmentalEffects: calculation.environmentalEffects,
       miscConstraints: calculation.miscConstraints,
-      loads: calculation.loads
+      loads: calculation.loads,
+      weightingFactors: calculation.weightingFactors
     });
   }
 
@@ -134,7 +149,8 @@ export class CalculationUpdateComponent implements OnInit {
       description: this.editForm.get(['description']).value,
       environmentalEffects: this.editForm.get(['environmentalEffects']).value,
       miscConstraints: this.editForm.get(['miscConstraints']).value,
-      loads: this.editForm.get(['loads']).value
+      loads: this.editForm.get(['loads']).value,
+      weightingFactors: this.editForm.get(['weightingFactors']).value
     };
   }
 
@@ -166,6 +182,10 @@ export class CalculationUpdateComponent implements OnInit {
     return item.id;
   }
 
+  trackWeightingFactorById(index: number, item: IWeightingFactor) {
+    return item.id;
+  }
+
   trackNounById(index: number, item: INoun) {
     return item.id;
   }
@@ -183,5 +203,9 @@ export class CalculationUpdateComponent implements OnInit {
       }
     }
     return option;
+  }
+
+  mapPropertiesToNames(properties: Array<IProperty>) {
+    return properties.map(property => property.name).join(', ');
   }
 }

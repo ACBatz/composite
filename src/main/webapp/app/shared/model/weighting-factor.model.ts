@@ -5,9 +5,9 @@ export interface IWeightingFactor {
   id?: number;
   value?: number;
   properties?: IProperty[];
-  calculation?: ICalculation;
+  calculations?: ICalculation[];
 }
 
 export class WeightingFactor implements IWeightingFactor {
-  constructor(public id?: number, public value?: number, public properties?: IProperty[], public calculation?: ICalculation) {}
+  constructor(public id?: number, public value?: number, public properties?: IProperty[], public calculations?: ICalculation[]) {}
 }

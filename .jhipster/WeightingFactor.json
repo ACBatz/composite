@@ -22,11 +22,12 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "many-to-many",
             "otherEntityName": "calculation",
             "otherEntityRelationshipName": "weightingFactors",
-            "relationshipName": "calculation",
-            "otherEntityField": "id"
+            "relationshipName": "calculations",
+            "otherEntityField": "id",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20191215071739",

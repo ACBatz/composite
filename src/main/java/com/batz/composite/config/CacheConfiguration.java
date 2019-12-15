@@ -77,6 +77,9 @@ public class CacheConfiguration {
             createCache(cm, com.batz.composite.domain.LoadDirection.class.getName() + ".loads");
             createCache(cm, com.batz.composite.domain.LoadShear.class.getName());
             createCache(cm, com.batz.composite.domain.LoadShear.class.getName() + ".loads");
+            createCache(cm, com.batz.composite.domain.Property.class.getName() + ".unitOfMeasures");
+            createCache(cm, com.batz.composite.domain.UnitOfMeasure.class.getName() + ".properties");
+            createCache(cm, com.batz.composite.domain.WeightingFactor.class.getName() + ".calculations");
             // jhipster-needle-ehcache-add-entry
         };
     }

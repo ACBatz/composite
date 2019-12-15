@@ -9,6 +9,12 @@
                 <dd>
                     <span>{{property.name}}</span>
                 </dd>
+                <dt><span>Unit Of Measure</span></dt>
+                <dd>
+                    <div *ngIf="property.unitOfMeasure">
+                        <a [routerLink]="['/unit-of-measure', property.unitOfMeasure?.id, 'view']">{{property.unitOfMeasure?.name}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

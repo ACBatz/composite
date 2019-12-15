@@ -16,14 +16,14 @@ import java.util.Optional;
 @Repository
 public interface CalculationRepository extends JpaRepository<Calculation, Long> {
 
-    @Query(value = "select distinct calculation from Calculation calculation left join fetch calculation.environmentalEffects left join fetch calculation.miscConstraints left join fetch calculation.loads",
+    @Query(value = "select distinct calculation from Calculation calculation left join fetch calculation.environmentalEffects left join fetch calculation.miscConstraints left join fetch calculation.loads left join fetch calculation.weightingFactors",
         countQuery = "select count(distinct calculation) from Calculation calculation")
     Page<Calculation> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct calculation from Calculation calculation left join fetch calculation.environmentalEffects left join fetch calculation.miscConstraints left join fetch calculation.loads")
+    @Query("select distinct calculation from Calculation calculation left join fetch calculation.environmentalEffects left join fetch calculation.miscConstraints left join fetch calculation.loads left join fetch calculation.weightingFactors")
     List<Calculation> findAllWithEagerRelationships();
 
-    @Query("select calculation from Calculation calculation left join fetch calculation.environmentalEffects left join fetch calculation.miscConstraints left join fetch calculation.loads where calculation.id =:id")
+    @Query("select calculation from Calculation calculation left join fetch calculation.environmentalEffects left join fetch calculation.miscConstraints left join fetch calculation.loads left join fetch calculation.weightingFactors where calculation.id =:id")
     Optional<Calculation> findOneWithEagerRelationships(@Param("id") Long id);
 
 }

@@ -12,6 +12,13 @@
     ],
     "relationships": [
         {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitOfMeasure",
+            "otherEntityRelationshipName": "properties",
+            "relationshipName": "unitOfMeasure",
+            "otherEntityField": "name"
+        },
+        {
             "relationshipType": "one-to-one",
             "otherEntityName": "limit",
             "otherEntityRelationshipName": "property",

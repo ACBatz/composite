@@ -31,6 +31,12 @@
                         <a [routerLink]="['/load', loads?.id, 'view' ]">{{loads.name}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
+                <dt><span>Weighting Factors</span></dt>
+                <dd>
+                    <span *ngFor="let weightingFactors of calculation.weightingFactors; let last = last">
+                        <a [routerLink]="['/weighting-factor', weightingFactors?.id, 'view' ]">{{weightingFactors.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

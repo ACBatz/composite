@@ -15,12 +15,6 @@
                         <a [routerLink]="['/property', property?.id, 'view' ]">{{property.name}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
-                <dt><span>Calculation</span></dt>
-                <dd>
-                    <div *ngIf="weightingFactor.calculation">
-                        <a [routerLink]="['/calculation', weightingFactor.calculation?.id, 'view']">{{weightingFactor.calculation?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

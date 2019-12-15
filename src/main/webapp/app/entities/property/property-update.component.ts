@@ -7,6 +7,8 @@ import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
 import { IProperty, Property } from 'app/shared/model/property.model';
 import { PropertyService } from './property.service';
+import { IUnitOfMeasure } from 'app/shared/model/unit-of-measure.model';
+import { UnitOfMeasureService } from 'app/entities/unit-of-measure';
 import { ILimit } from 'app/shared/model/limit.model';
 import { LimitService } from 'app/entities/limit';
 import { IWeightingFactor } from 'app/shared/model/weighting-factor.model';
@@ -21,6 +23,8 @@ import { MiscellaneousConstraintService } from 'app/entities/miscellaneous-const
 export class PropertyUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  unitofmeasures: IUnitOfMeasure[];
+
   limits: ILimit[];
 
   weightingfactors: IWeightingFactor[];
@@ -29,12 +33,14 @@ export class PropertyUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    name: [null, [Validators.required]]
+    name: [null, [Validators.required]],
+    unitOfMeasure: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected propertyService: PropertyService,
+    protected unitOfMeasureService: UnitOfMeasureService,
     protected limitService: LimitService,
     protected weightingFactorService: WeightingFactorService,
     protected miscellaneousConstraintService: MiscellaneousConstraintService,
@@ -47,6 +53,13 @@ export class PropertyUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ property }) => {
       this.updateForm(property);
     });
+    this.unitOfMeasureService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUnitOfMeasure[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUnitOfMeasure[]>) => response.body)
+      )
+      .subscribe((res: IUnitOfMeasure[]) => (this.unitofmeasures = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.limitService
       .query()
       .pipe(
@@ -76,7 +89,8 @@ export class PropertyUpdateComponent implements OnInit {
   updateForm(property: IProperty) {
     this.editForm.patchValue({
       id: property.id,
-      name: property.name
+      name: property.name,
+      unitOfMeasure: property.unitOfMeasure
     });
   }
 
@@ -98,7 +112,8 @@ export class PropertyUpdateComponent implements OnInit {
     return {
       ...new Property(),
       id: this.editForm.get(['id']).value,
-      name: this.editForm.get(['name']).value
+      name: this.editForm.get(['name']).value,
+      unitOfMeasure: this.editForm.get(['unitOfMeasure']).value
     };
   }
 
@@ -116,6 +131,10 @@ export class PropertyUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackUnitOfMeasureById(index: number, item: IUnitOfMeasure) {
+    return item.id;
   }
 
   trackLimitById(index: number, item: ILimit) {

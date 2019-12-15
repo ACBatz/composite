@@ -33,10 +33,6 @@ public class Calculation implements Serializable {
     @Column(name = "description", length = 100)
     private String description;
 
-    @OneToMany(mappedBy = "calculation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<WeightingFactor> weightingFactors = new HashSet<>();
-
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "calculation_environmental_effects",
@@ -57,6 +53,13 @@ public class Calculation implements Serializable {
                joinColumns = @JoinColumn(name = "calculation_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "loads_id", referencedColumnName = "id"))
     private Set<Load> loads = new HashSet<>();
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "calculation_weighting_factors",
+               joinColumns = @JoinColumn(name = "calculation_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "weighting_factors_id", referencedColumnName = "id"))
+    private Set<WeightingFactor> weightingFactors = new HashSet<>();
 
     @OneToOne(mappedBy = "calculation")
     @JsonIgnore
@@ -103,31 +106,6 @@ public class Calculation implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<WeightingFactor> getWeightingFactors() {
-        return weightingFactors;
-    }
-
-    public Calculation weightingFactors(Set<WeightingFactor> weightingFactors) {
-        this.weightingFactors = weightingFactors;
-        return this;
-    }
-
-    public Calculation addWeightingFactors(WeightingFactor weightingFactor) {
-        this.weightingFactors.add(weightingFactor);
-        weightingFactor.setCalculation(this);
-        return this;
-    }
-
-    public Calculation removeWeightingFactors(WeightingFactor weightingFactor) {
-        this.weightingFactors.remove(weightingFactor);
-        weightingFactor.setCalculation(null);
-        return this;
-    }
-
-    public void setWeightingFactors(Set<WeightingFactor> weightingFactors) {
-        this.weightingFactors = weightingFactors;
     }
 
     public Set<EnvironmentalEffect> getEnvironmentalEffects() {
@@ -203,6 +181,31 @@ public class Calculation implements Serializable {
 
     public void setLoads(Set<Load> loads) {
         this.loads = loads;
+    }
+
+    public Set<WeightingFactor> getWeightingFactors() {
+        return weightingFactors;
+    }
+
+    public Calculation weightingFactors(Set<WeightingFactor> weightingFactors) {
+        this.weightingFactors = weightingFactors;
+        return this;
+    }
+
+    public Calculation addWeightingFactors(WeightingFactor weightingFactor) {
+        this.weightingFactors.add(weightingFactor);
+        weightingFactor.getCalculations().add(this);
+        return this;
+    }
+
+    public Calculation removeWeightingFactors(WeightingFactor weightingFactor) {
+        this.weightingFactors.remove(weightingFactor);
+        weightingFactor.getCalculations().remove(this);
+        return this;
+    }
+
+    public void setWeightingFactors(Set<WeightingFactor> weightingFactors) {
+        this.weightingFactors = weightingFactors;
     }
 
     public Noun getNoun() {

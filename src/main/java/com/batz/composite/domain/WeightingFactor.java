@@ -1,5 +1,5 @@
 package com.batz.composite.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -37,9 +37,10 @@ public class WeightingFactor implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "property_id", referencedColumnName = "id"))
     private Set<Property> properties = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("weightingFactors")
-    private Calculation calculation;
+    @ManyToMany(mappedBy = "weightingFactors")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonIgnore
+    private Set<Calculation> calculations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,17 +89,29 @@ public class WeightingFactor implements Serializable {
         this.properties = properties;
     }
 
-    public Calculation getCalculation() {
-        return calculation;
+    public Set<Calculation> getCalculations() {
+        return calculations;
     }
 
-    public WeightingFactor calculation(Calculation calculation) {
-        this.calculation = calculation;
+    public WeightingFactor calculations(Set<Calculation> calculations) {
+        this.calculations = calculations;
         return this;
     }
 
-    public void setCalculation(Calculation calculation) {
-        this.calculation = calculation;
+    public WeightingFactor addCalculations(Calculation calculation) {
+        this.calculations.add(calculation);
+        calculation.getWeightingFactors().add(this);
+        return this;
+    }
+
+    public WeightingFactor removeCalculations(Calculation calculation) {
+        this.calculations.remove(calculation);
+        calculation.getWeightingFactors().remove(this);
+        return this;
+    }
+
+    public void setCalculations(Set<Calculation> calculations) {
+        this.calculations = calculations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

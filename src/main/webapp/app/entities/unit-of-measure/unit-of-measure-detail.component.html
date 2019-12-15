@@ -9,12 +9,6 @@
                 <dd>
                     <span>{{unitOfMeasure.name}}</span>
                 </dd>
-                <dt><span>Limits</span></dt>
-                <dd>
-                    <span *ngFor="let limits of unitOfMeasure.limits; let last = last">
-                        <a [routerLink]="['/limit', limits?.id, 'view' ]">{{limits.id}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

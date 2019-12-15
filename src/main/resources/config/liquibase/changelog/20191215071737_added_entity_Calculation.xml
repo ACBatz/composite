@@ -63,6 +63,17 @@
 
         <addPrimaryKey columnNames="calculation_id, loads_id" tableName="calculation_loads"/>
         
+        <createTable tableName="calculation_weighting_factors">
+            <column name="weighting_factors_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="calculation_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="calculation_id, weighting_factors_id" tableName="calculation_weighting_factors"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 

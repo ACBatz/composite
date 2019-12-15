@@ -35,13 +35,6 @@
                         <option [ngValue]="getSelected(editForm.get('properties').value, propertyOption)" *ngFor="let propertyOption of properties; trackBy: trackPropertyById">{{propertyOption.name}}</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_calculation">Calculation</label>
-                    <select class="form-control" id="field_calculation" name="calculation" formControlName="calculation">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="calculationOption.id === editForm.get('calculation').value?.id ? editForm.get('calculation').value : calculationOption" *ngFor="let calculationOption of calculations; trackBy: trackCalculationById">{{calculationOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

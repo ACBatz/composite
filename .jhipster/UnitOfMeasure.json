@@ -12,12 +12,10 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "limit",
+            "relationshipType": "one-to-many",
+            "otherEntityName": "property",
             "otherEntityRelationshipName": "unitOfMeasure",
-            "relationshipName": "limits",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "relationshipName": "properties"
         }
     ],
     "changelogDate": "20191215071736",

@@ -8,17 +8,11 @@
     -->
     <changeSet id="20191215071736-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="unit_of_measure_id"
-                                 baseTableName="unit_of_measure_limits"
-                                 constraintName="fk_unit_of_measure_limits_unit_of_measure_id"
+        <addForeignKeyConstraint baseColumnNames="properties_id"
+                                 baseTableName="unit_of_measure"
+                                 constraintName="fk_unit_of_measure_properties_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="unit_of_measure"/>
+                                 referencedTableName="property"/>
 
-        <addForeignKeyConstraint baseColumnNames="limits_id"
-                                 baseTableName="unit_of_measure_limits"
-                                 constraintName="fk_unit_of_measure_limits_limits_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="jhi_limit"/>
-        
     </changeSet>
 </databaseChangeLog>

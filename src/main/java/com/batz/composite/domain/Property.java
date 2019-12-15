@@ -1,5 +1,6 @@
 package com.batz.composite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -28,6 +29,10 @@ public class Property implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false, unique = true)
     private String name;
+
+    @ManyToOne
+    @JsonIgnoreProperties("properties")
+    private UnitOfMeasure unitOfMeasure;
 
     @OneToOne(mappedBy = "property")
     @JsonIgnore
@@ -63,6 +68,19 @@ public class Property implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public UnitOfMeasure getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public Property unitOfMeasure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
+        return this;
+    }
+
+    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
     }
 
     public Limit getLimit() {

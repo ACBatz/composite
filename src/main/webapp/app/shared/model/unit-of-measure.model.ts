@@ -1,11 +1,11 @@
-import { ILimit } from 'app/shared/model/limit.model';
+import { IProperty } from 'app/shared/model/property.model';
 
 export interface IUnitOfMeasure {
   id?: number;
   name?: string;
-  limits?: ILimit[];
+  properties?: IProperty[];
 }
 
 export class UnitOfMeasure implements IUnitOfMeasure {
-  constructor(public id?: number, public name?: string, public limits?: ILimit[]) {}
+  constructor(public id?: number, public name?: string, public properties?: IProperty[]) {}
 }
