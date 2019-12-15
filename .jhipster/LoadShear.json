@@ -1,0 +1,31 @@
+{
+    "name": "LoadShear",
+    "fields": [
+        {
+            "fieldName": "loadShearEnum",
+            "fieldType": "LoadShearEnum",
+            "fieldValues": "INPLANE,INTERLAMINAR",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "load",
+            "otherEntityRelationshipName": "loadShear",
+            "relationshipName": "load"
+        }
+    ],
+    "changelogDate": "20191215071741",
+    "entityTableName": "load_shear",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

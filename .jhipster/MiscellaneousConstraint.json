@@ -1,0 +1,48 @@
+{
+    "name": "MiscellaneousConstraint",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "maximize",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "minimize",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "property",
+            "otherEntityRelationshipName": "miscellaneousConstraints",
+            "relationshipName": "property",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "calculation",
+            "otherEntityRelationshipName": "miscConstraints",
+            "relationshipName": "calculations",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191215071734",
+    "entityTableName": "miscellaneous_constraint",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

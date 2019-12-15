@@ -45,6 +45,38 @@ public class CacheConfiguration {
             createCache(cm, com.batz.composite.domain.User.class.getName() + ".authorities");
             createCache(cm, com.batz.composite.domain.PersistentToken.class.getName());
             createCache(cm, com.batz.composite.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.batz.composite.domain.Composite.class.getName());
+            createCache(cm, com.batz.composite.domain.Composite.class.getName() + ".limits");
+            createCache(cm, com.batz.composite.domain.Property.class.getName());
+            createCache(cm, com.batz.composite.domain.Property.class.getName() + ".weightingFactors");
+            createCache(cm, com.batz.composite.domain.Property.class.getName() + ".miscellaneousConstraints");
+            createCache(cm, com.batz.composite.domain.Noun.class.getName());
+            createCache(cm, com.batz.composite.domain.Verb.class.getName());
+            createCache(cm, com.batz.composite.domain.Load.class.getName());
+            createCache(cm, com.batz.composite.domain.Load.class.getName() + ".calculations");
+            createCache(cm, com.batz.composite.domain.EnvironmentalEffect.class.getName());
+            createCache(cm, com.batz.composite.domain.EnvironmentalEffect.class.getName() + ".calculations");
+            createCache(cm, com.batz.composite.domain.MiscellaneousConstraint.class.getName());
+            createCache(cm, com.batz.composite.domain.MiscellaneousConstraint.class.getName() + ".properties");
+            createCache(cm, com.batz.composite.domain.MiscellaneousConstraint.class.getName() + ".calculations");
+            createCache(cm, com.batz.composite.domain.Limit.class.getName());
+            createCache(cm, com.batz.composite.domain.Limit.class.getName() + ".composites");
+            createCache(cm, com.batz.composite.domain.Limit.class.getName() + ".unitOfMeasures");
+            createCache(cm, com.batz.composite.domain.UnitOfMeasure.class.getName());
+            createCache(cm, com.batz.composite.domain.UnitOfMeasure.class.getName() + ".limits");
+            createCache(cm, com.batz.composite.domain.Calculation.class.getName());
+            createCache(cm, com.batz.composite.domain.Calculation.class.getName() + ".weightingFactors");
+            createCache(cm, com.batz.composite.domain.Calculation.class.getName() + ".environmentalEffects");
+            createCache(cm, com.batz.composite.domain.Calculation.class.getName() + ".miscConstraints");
+            createCache(cm, com.batz.composite.domain.Calculation.class.getName() + ".loads");
+            createCache(cm, com.batz.composite.domain.Calculation.class.getName() + ".results");
+            createCache(cm, com.batz.composite.domain.CalculationResult.class.getName());
+            createCache(cm, com.batz.composite.domain.WeightingFactor.class.getName());
+            createCache(cm, com.batz.composite.domain.WeightingFactor.class.getName() + ".properties");
+            createCache(cm, com.batz.composite.domain.LoadDirection.class.getName());
+            createCache(cm, com.batz.composite.domain.LoadDirection.class.getName() + ".loads");
+            createCache(cm, com.batz.composite.domain.LoadShear.class.getName());
+            createCache(cm, com.batz.composite.domain.LoadShear.class.getName() + ".loads");
             // jhipster-needle-ehcache-add-entry
         };
     }

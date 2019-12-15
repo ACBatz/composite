@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Load.
+    -->
+    <changeSet id="20191215071732-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="load_shear_id"
+                                 baseTableName="load"
+                                 constraintName="fk_load_load_shear_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="load_shear"/>
+
+        <addForeignKeyConstraint baseColumnNames="load_direction_id"
+                                 baseTableName="load"
+                                 constraintName="fk_load_load_direction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="load_direction"/>
+
+    </changeSet>
+</databaseChangeLog>

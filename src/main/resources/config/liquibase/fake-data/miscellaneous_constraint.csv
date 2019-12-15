@@ -1,0 +1,6 @@
+id;name;maximize;minimize
+1;Minimize weight;false;true
+2;Minimize cost;false;true
+3;Maximize availability;true;false
+4;Maximize service life;true;false
+5;Maximize formability;true;false

@@ -1,0 +1,48 @@
+{
+    "name": "Limit",
+    "fields": [
+        {
+            "fieldName": "maximum",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "property",
+            "otherEntityRelationshipName": "limit",
+            "relationshipName": "property",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "composite",
+            "otherEntityRelationshipName": "limits",
+            "relationshipName": "composites",
+            "otherEntityField": "id",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "unitOfMeasure",
+            "otherEntityRelationshipName": "limits",
+            "relationshipName": "unitOfMeasure",
+            "otherEntityField": "name",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191215071735",
+    "entityTableName": "limit",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

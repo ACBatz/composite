@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Calculation.
+    -->
+    <changeSet id="20191215071737-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="calculation_id"
+                                 baseTableName="calculation_environmental_effects"
+                                 constraintName="fk_calculation_environmental_effects_calculation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="calculation"/>
+
+        <addForeignKeyConstraint baseColumnNames="environmental_effects_id"
+                                 baseTableName="calculation_environmental_effects"
+                                 constraintName="fk_calculation_environmental_effects_environmental_effects_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="environmental_effect"/>
+        
+        <addForeignKeyConstraint baseColumnNames="calculation_id"
+                                 baseTableName="calculation_misc_constraints"
+                                 constraintName="fk_calculation_misc_constraints_calculation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="calculation"/>
+
+        <addForeignKeyConstraint baseColumnNames="misc_constraints_id"
+                                 baseTableName="calculation_misc_constraints"
+                                 constraintName="fk_calculation_misc_constraints_misc_constraints_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="miscellaneous_constraint"/>
+        
+        <addForeignKeyConstraint baseColumnNames="calculation_id"
+                                 baseTableName="calculation_loads"
+                                 constraintName="fk_calculation_loads_calculation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="calculation"/>
+
+        <addForeignKeyConstraint baseColumnNames="loads_id"
+                                 baseTableName="calculation_loads"
+                                 constraintName="fk_calculation_loads_loads_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="load"/>
+        
+    </changeSet>
+</databaseChangeLog>

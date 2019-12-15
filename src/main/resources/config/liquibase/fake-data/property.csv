@@ -1,0 +1,31 @@
+id;name
+1;Tensile Strength - Longitudinal
+2;Tensile Strength - Transverse
+3;Tensile Modulus - Longitudinal
+4;Tensile Modulus - Transverse
+5;Compressive Strength - Longitudinal
+6;Compressive Strength - Transverse
+7;Flexural Strength
+8;Flexural Modulus
+9;Interlaminar Shear Strength
+10;In-plane Shear Strength
+11;Izod Impact Strength
+12;Poisson's Ratio
+13;Percent Elongation
+14;Density
+15;Water Absorption
+16;Delectric Strength
+17;Electrical Volume Resistivity
+18;Coefficient of Thermal Expansion - Longitudinal
+19;Coefficient of Thermal Expansion - Transverse
+20;Maximum Usable Temperature
+21;Heat Deflection Temperature
+22;Thermal Conductivity
+23;Lammability Rating
+24;Corrosion Resistance - Acids
+25;Corrosion Resistance - Alkalis
+26;Corrosion Resistance - Bases
+27;Ultraviolet Light Exposure Resistance
+28;Cost
+29;Availability
+30;Formability

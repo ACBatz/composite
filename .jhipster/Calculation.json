@@ -1,0 +1,82 @@
+{
+    "name": "Calculation",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "weightingFactor",
+            "otherEntityRelationshipName": "calculation",
+            "relationshipName": "weightingFactors"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "environmentalEffect",
+            "otherEntityRelationshipName": "calculations",
+            "relationshipName": "environmentalEffects",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "miscellaneousConstraint",
+            "otherEntityRelationshipName": "calculations",
+            "relationshipName": "miscConstraints",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "load",
+            "otherEntityRelationshipName": "calculations",
+            "relationshipName": "loads",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "noun",
+            "otherEntityRelationshipName": "calculation",
+            "relationshipName": "noun",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "verb",
+            "otherEntityRelationshipName": "calculation",
+            "relationshipName": "verb",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "calculationResult",
+            "otherEntityRelationshipName": "calculation",
+            "relationshipName": "results"
+        }
+    ],
+    "changelogDate": "20191215071737",
+    "entityTableName": "calculation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

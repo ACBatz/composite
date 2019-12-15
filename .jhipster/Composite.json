@@ -1,0 +1,39 @@
+{
+    "name": "Composite",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "limit",
+            "otherEntityRelationshipName": "composites",
+            "relationshipName": "limits",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "calculationResult",
+            "otherEntityRelationshipName": "composite",
+            "relationshipName": "result",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191215071728",
+    "entityTableName": "composite",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
