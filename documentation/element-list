@@ -1,0 +1,15 @@
+com.batz.composite
+com.batz.composite.aop.logging
+com.batz.composite.config
+com.batz.composite.config.audit
+com.batz.composite.domain
+com.batz.composite.domain.enumeration
+com.batz.composite.repository
+com.batz.composite.security
+com.batz.composite.service
+com.batz.composite.service.dto
+com.batz.composite.service.mapper
+com.batz.composite.service.util
+com.batz.composite.web.rest
+com.batz.composite.web.rest.errors
+com.batz.composite.web.rest.vm
