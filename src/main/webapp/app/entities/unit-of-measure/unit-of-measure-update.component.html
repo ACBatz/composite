@@ -21,12 +21,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="field_limits">Limits</label>
-                    <select class="form-control" id="field_limits" multiple name="limits" formControlName="limits">
-                        <option [ngValue]="getSelected(editForm.get('limits').value, limitOption)" *ngFor="let limitOption of limits; trackBy: trackLimitById">{{limitOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

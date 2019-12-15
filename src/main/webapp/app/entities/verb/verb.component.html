@@ -19,7 +19,6 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Name</span></th>
-            <th><span>Calculation</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,11 +26,6 @@
             <tr *ngFor="let verb of verbs ;trackBy: trackId">
                 <td><a [routerLink]="['/verb', verb.id, 'view' ]">{{verb.id}}</a></td>
                 <td>{{verb.name}}</td>
-                <td>
-                    <div *ngIf="verb.calculation">
-                        <a [routerLink]="['/calculation', verb.calculation?.id, 'view' ]" >{{verb.calculation?.id}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
